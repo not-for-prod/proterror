@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package proterror;
+package proterrors;
 
 import "google/protobuf/descriptor.proto";
 import "google/rpc/code.proto";
 
-option go_package = "github.com/not-for-prod/nfp341/proterrors/proterror";
+option go_package = "github.com/not-for-prod/nfp341/proterrors/proterrors";
 
 message MessageOptions {
   google.rpc.Code code = 1;
