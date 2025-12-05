@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        (unknown)
-// source: erroptions/options.proto
+// source: proterror/options.proto
 
-package erroptions
+package proterror
 
 import (
 	code "google.golang.org/genproto/googleapis/rpc/code"
@@ -23,29 +23,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ErrorMessageOptions struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Code            code.Code              `protobuf:"varint,1,opt,name=code,proto3,enum=google.rpc.Code" json:"code,omitempty"`
-	MessageTemplate string                 `protobuf:"bytes,2,opt,name=message_template,json=messageTemplate,proto3" json:"message_template,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+type MessageOptions struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          code.Code              `protobuf:"varint,1,opt,name=code,proto3,enum=google.rpc.Code" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ErrorMessageOptions) Reset() {
-	*x = ErrorMessageOptions{}
-	mi := &file_erroptions_options_proto_msgTypes[0]
+func (x *MessageOptions) Reset() {
+	*x = MessageOptions{}
+	mi := &file_proterror_options_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ErrorMessageOptions) String() string {
+func (x *MessageOptions) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ErrorMessageOptions) ProtoMessage() {}
+func (*MessageOptions) ProtoMessage() {}
 
-func (x *ErrorMessageOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_erroptions_options_proto_msgTypes[0]
+func (x *MessageOptions) ProtoReflect() protoreflect.Message {
+	mi := &file_proterror_options_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,79 +55,67 @@ func (x *ErrorMessageOptions) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ErrorMessageOptions.ProtoReflect.Descriptor instead.
-func (*ErrorMessageOptions) Descriptor() ([]byte, []int) {
-	return file_erroptions_options_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use MessageOptions.ProtoReflect.Descriptor instead.
+func (*MessageOptions) Descriptor() ([]byte, []int) {
+	return file_proterror_options_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ErrorMessageOptions) GetCode() code.Code {
+func (x *MessageOptions) GetCode() code.Code {
 	if x != nil {
 		return x.Code
 	}
 	return code.Code(0)
 }
 
-func (x *ErrorMessageOptions) GetMessageTemplate() string {
-	if x != nil {
-		return x.MessageTemplate
-	}
-	return ""
-}
-
-var file_erroptions_options_proto_extTypes = []protoimpl.ExtensionInfo{
+var file_proterror_options_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.MessageOptions)(nil),
-		ExtensionType: (*ErrorMessageOptions)(nil),
+		ExtensionType: (*MessageOptions)(nil),
 		Field:         1043,
-		Name:          "erroptions.error_details",
-		Tag:           "bytes,1043,opt,name=error_details",
-		Filename:      "erroptions/options.proto",
+		Name:          "proterror.options",
+		Tag:           "bytes,1043,opt,name=options",
+		Filename:      "proterror/options.proto",
 	},
 }
 
 // Extension fields to descriptorpb.MessageOptions.
 var (
-	// optional erroptions.ErrorMessageOptions error_details = 1043;
-	E_ErrorDetails = &file_erroptions_options_proto_extTypes[0]
+	// optional proterror.MessageOptions options = 1043;
+	E_Options = &file_proterror_options_proto_extTypes[0]
 )
 
-var File_erroptions_options_proto protoreflect.FileDescriptor
+var File_proterror_options_proto protoreflect.FileDescriptor
 
-const file_erroptions_options_proto_rawDesc = "" +
+const file_proterror_options_proto_rawDesc = "" +
 	"\n" +
-	"\x18erroptions/options.proto\x12\n" +
-	"erroptions\x1a google/protobuf/descriptor.proto\x1a\x15google/rpc/code.proto\"f\n" +
-	"\x13ErrorMessageOptions\x12$\n" +
-	"\x04code\x18\x01 \x01(\x0e2\x10.google.rpc.CodeR\x04code\x12)\n" +
-	"\x10message_template\x18\x02 \x01(\tR\x0fmessageTemplate:f\n" +
-	"\rerror_details\x12\x1f.google.protobuf.MessageOptions\x18\x93\b \x01(\v2\x1f.erroptions.ErrorMessageOptionsR\ferrorDetailsB\x8e\x01\n" +
-	"\x0ecom.erroptionsB\fOptionsProtoP\x01Z&payin/internal/generated/pb/erroptions\xa2\x02\x03EXX\xaa\x02\n" +
-	"Erroptions\xca\x02\n" +
-	"Erroptions\xe2\x02\x16Erroptions\\GPBMetadata\xea\x02\n" +
-	"Erroptionsb\x06proto3"
+	"\x17proterror/options.proto\x12\tproterror\x1a google/protobuf/descriptor.proto\x1a\x15google/rpc/code.proto\"6\n" +
+	"\x0eMessageOptions\x12$\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x10.google.rpc.CodeR\x04code:U\n" +
+	"\aoptions\x12\x1f.google.protobuf.MessageOptions\x18\x93\b \x01(\v2\x19.proterror.MessageOptionsR\aoptionsB\x88\x01\n" +
+	"\rcom.proterrorB\fOptionsProtoP\x01Z%payin/internal/generated/pb/proterror\xa2\x02\x03PXX\xaa\x02\tProterror\xca\x02\tProterror\xe2\x02\x15Proterror\\GPBMetadata\xea\x02\tProterrorb\x06proto3"
 
 var (
-	file_erroptions_options_proto_rawDescOnce sync.Once
-	file_erroptions_options_proto_rawDescData []byte
+	file_proterror_options_proto_rawDescOnce sync.Once
+	file_proterror_options_proto_rawDescData []byte
 )
 
-func file_erroptions_options_proto_rawDescGZIP() []byte {
-	file_erroptions_options_proto_rawDescOnce.Do(func() {
-		file_erroptions_options_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_erroptions_options_proto_rawDesc), len(file_erroptions_options_proto_rawDesc)))
+func file_proterror_options_proto_rawDescGZIP() []byte {
+	file_proterror_options_proto_rawDescOnce.Do(func() {
+		file_proterror_options_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proterror_options_proto_rawDesc), len(file_proterror_options_proto_rawDesc)))
 	})
-	return file_erroptions_options_proto_rawDescData
+	return file_proterror_options_proto_rawDescData
 }
 
-var file_erroptions_options_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_erroptions_options_proto_goTypes = []any{
-	(*ErrorMessageOptions)(nil),         // 0: erroptions.ErrorMessageOptions
+var file_proterror_options_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_proterror_options_proto_goTypes = []any{
+	(*MessageOptions)(nil),              // 0: proterror.MessageOptions
 	(code.Code)(0),                      // 1: google.rpc.Code
 	(*descriptorpb.MessageOptions)(nil), // 2: google.protobuf.MessageOptions
 }
-var file_erroptions_options_proto_depIdxs = []int32{
-	1, // 0: erroptions.ErrorMessageOptions.code:type_name -> google.rpc.Code
-	2, // 1: erroptions.error_details:extendee -> google.protobuf.MessageOptions
-	0, // 2: erroptions.error_details:type_name -> erroptions.ErrorMessageOptions
+var file_proterror_options_proto_depIdxs = []int32{
+	1, // 0: proterror.MessageOptions.code:type_name -> google.rpc.Code
+	2, // 1: proterror.options:extendee -> google.protobuf.MessageOptions
+	0, // 2: proterror.options:type_name -> proterror.MessageOptions
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	2, // [2:3] is the sub-list for extension type_name
@@ -136,27 +123,27 @@ var file_erroptions_options_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_erroptions_options_proto_init() }
-func file_erroptions_options_proto_init() {
-	if File_erroptions_options_proto != nil {
+func init() { file_proterror_options_proto_init() }
+func file_proterror_options_proto_init() {
+	if File_proterror_options_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_erroptions_options_proto_rawDesc), len(file_erroptions_options_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proterror_options_proto_rawDesc), len(file_proterror_options_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 1,
 			NumServices:   0,
 		},
-		GoTypes:           file_erroptions_options_proto_goTypes,
-		DependencyIndexes: file_erroptions_options_proto_depIdxs,
-		MessageInfos:      file_erroptions_options_proto_msgTypes,
-		ExtensionInfos:    file_erroptions_options_proto_extTypes,
+		GoTypes:           file_proterror_options_proto_goTypes,
+		DependencyIndexes: file_proterror_options_proto_depIdxs,
+		MessageInfos:      file_proterror_options_proto_msgTypes,
+		ExtensionInfos:    file_proterror_options_proto_extTypes,
 	}.Build()
-	File_erroptions_options_proto = out.File
-	file_erroptions_options_proto_goTypes = nil
-	file_erroptions_options_proto_depIdxs = nil
+	File_proterror_options_proto = out.File
+	file_proterror_options_proto_goTypes = nil
+	file_proterror_options_proto_depIdxs = nil
 }

@@ -1,17 +1,16 @@
 syntax = "proto3";
 
-package erroptions;
+package proterror;
 
 import "google/protobuf/descriptor.proto";
 import "google/rpc/code.proto";
 
-option go_package = "github.com/not-for-prod/nfp341/proterrors/erroptions";
+option go_package = "github.com/not-for-prod/nfp341/proterrors/proterror";
 
-message ErrorMessageOptions {
+message MessageOptions {
   google.rpc.Code code = 1;
-  string message_template = 2;
 }
 
 extend google.protobuf.MessageOptions {
-  ErrorMessageOptions error_details = 1043;
+  MessageOptions options = 1043;
 }
