@@ -3,6 +3,7 @@
 package proterror
 
 import (
+	errors "errors"
 	registry "github.com/not-for-prod/proterror/registry"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -28,6 +29,10 @@ func (x *Cancelled) Code() codes.Code {
 func (x *Cancelled) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *Cancelled) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -56,6 +61,10 @@ func (x *Unknown) Status() *status.Status {
 	return st
 }
 
+func (x *Unknown) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&Unknown{})
 }
@@ -80,6 +89,10 @@ func (x *InvalidArgument) Code() codes.Code {
 func (x *InvalidArgument) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *InvalidArgument) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -108,6 +121,10 @@ func (x *DeadlineExceeded) Status() *status.Status {
 	return st
 }
 
+func (x *DeadlineExceeded) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&DeadlineExceeded{})
 }
@@ -132,6 +149,10 @@ func (x *NotFound) Code() codes.Code {
 func (x *NotFound) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *NotFound) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -160,6 +181,10 @@ func (x *AlreadyExists) Status() *status.Status {
 	return st
 }
 
+func (x *AlreadyExists) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&AlreadyExists{})
 }
@@ -184,6 +209,10 @@ func (x *PermissionDenied) Code() codes.Code {
 func (x *PermissionDenied) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *PermissionDenied) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -212,6 +241,10 @@ func (x *ResourceExhausted) Status() *status.Status {
 	return st
 }
 
+func (x *ResourceExhausted) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&ResourceExhausted{})
 }
@@ -236,6 +269,10 @@ func (x *FailedPrecondition) Code() codes.Code {
 func (x *FailedPrecondition) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *FailedPrecondition) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -264,6 +301,10 @@ func (x *Aborted) Status() *status.Status {
 	return st
 }
 
+func (x *Aborted) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&Aborted{})
 }
@@ -288,6 +329,10 @@ func (x *OutOfRange) Code() codes.Code {
 func (x *OutOfRange) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *OutOfRange) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -316,6 +361,10 @@ func (x *Unimplemented) Status() *status.Status {
 	return st
 }
 
+func (x *Unimplemented) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&Unimplemented{})
 }
@@ -340,6 +389,10 @@ func (x *Internal) Code() codes.Code {
 func (x *Internal) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *Internal) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {
@@ -368,6 +421,10 @@ func (x *Unavailable) Status() *status.Status {
 	return st
 }
 
+func (x *Unavailable) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&Unavailable{})
 }
@@ -394,6 +451,10 @@ func (x *DataLoss) Status() *status.Status {
 	return st
 }
 
+func (x *DataLoss) Join(err error) error {
+	return errors.Join(x, err)
+}
+
 func init() {
 	registry.Instance().Add(&DataLoss{})
 }
@@ -418,6 +479,10 @@ func (x *Unauthenticated) Code() codes.Code {
 func (x *Unauthenticated) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func (x *Unauthenticated) Join(err error) error {
+	return errors.Join(x, err)
 }
 
 func init() {

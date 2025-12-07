@@ -11,4 +11,5 @@ type ProtError interface {
 	Error() string
 	Is(err error) bool
 	Status() *status.Status
+	Join(err error) error
 }
