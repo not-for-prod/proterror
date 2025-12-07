@@ -1,0 +1,107 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    # default linters
+    - errcheck
+    - ineffassign
+    - unused
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - containedctx
+    - decorder
+    - errname
+    - errorlint
+    - exhaustive
+    - copyloopvar
+    - forcetypeassert
+    - gochecknoinits
+    - gocognit
+    - goconst
+    - godot
+    - mnd
+    - lll
+    - makezero
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - nolintlint
+    - paralleltest
+    - promlinter
+    - reassign
+    - revive
+    - staticcheck
+    - gosec
+    - rowserrcheck
+    - sqlclosecheck
+    - unconvert
+    - unparam
+    - whitespace
+    - wsl
+    - wastedassign
+    - dupl
+
+    # additional linters for specifig project
+
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+      exclude-functions:
+        - "(*database/query.Rows).Close"
+    goconst:
+      min-len: 2
+      min-occurrences: 2
+    nakedret:
+      max-func-lines: 30
+    nlreturn:
+      block-size: 4
+    govet:
+      disable:
+        - shadow
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+    wsl:
+      allow-cuddle-declarations: true
+      force-err-cuddling: true
+      allow-assign-and-anything: true
+    gocognit:
+      min-complexity: 20
+    revive:
+      rules:
+        - name: use-any
+        - name: unexported-naming
+        - name: comment-spacings
+        - name: enforce-repeated-arg-type-style
+          arguments:
+            - funcArgStyle: "full"
+            - funcRetValStyle: "short"
+    gosec:
+      excludes:
+        - G115 # rule restricts decimalconvert signed and unsigned integers, excluded because needs to rewrite whole cascade services
+
+formatters:
+  enable:
+    - gofumpt
+    - gci
+    - golines
+  settings:
+    # remove it if your project is public
+    gofumpt:
+      module-path: wallet
+    gci:
+      sections:
+        - standard
+        - default
+        - localmodule
+    golines:
+      max-len: 120
+      chain-split-dots: true
+
+run:
+  timeout: 30s

@@ -1,0 +1,88 @@
+// errors.proto defines the canonical proto-based errors exported by proterror.
+syntax = "proto3";
+
+package proterror;
+
+import "proterror/options.proto";
+
+option go_package = "github.com/not-for-prod/proterror/proterror";
+
+// Cancelled indicates the operation was cancelled (typically by the caller).
+message Cancelled {
+  option (proterror.options).code = CANCELLED;
+}
+
+// Unknown is a fallback error for unexpected failures.
+message Unknown {
+  option (proterror.options).code = UNKNOWN;
+}
+
+// InvalidArgument indicates client specified an invalid argument.
+message InvalidArgument {
+  option (proterror.options).code = INVALID_ARGUMENT;
+}
+
+// DeadlineExceeded indicates the deadline expired before completion.
+message DeadlineExceeded {
+  option (proterror.options).code = DEADLINE_EXCEEDED;
+}
+
+// NotFound indicates a requested resource was not found.
+message NotFound {
+  option (proterror.options).code = NOT_FOUND;
+}
+
+// AlreadyExists indicates the resource that a client attempted to create already exists.
+message AlreadyExists {
+  option (proterror.options).code = ALREADY_EXISTS;
+}
+
+// PermissionDenied indicates the caller does not have permission to execute the specified operation.
+message PermissionDenied {
+  option (proterror.options).code = PERMISSION_DENIED;
+}
+
+// ResourceExhausted indicates some resource has been exhausted, perhaps a per-user quota.
+message ResourceExhausted {
+  option (proterror.options).code = RESOURCE_EXHAUSTED;
+}
+
+// FailedPrecondition indicates operation was rejected because the system is not in a required state.
+message FailedPrecondition {
+  option (proterror.options).code = FAILED_PRECONDITION;
+}
+
+// Aborted indicates the operation was aborted, typically due to concurrency issues.
+message Aborted {
+  option (proterror.options).code = ABORTED;
+}
+
+// OutOfRange indicates operation was attempted past the valid range.
+message OutOfRange {
+  option (proterror.options).code = OUT_OF_RANGE;
+}
+
+// Unimplemented indicates operation is not implemented or not supported/enabled.
+message Unimplemented {
+  option (proterror.options).code = UNIMPLEMENTED;
+}
+
+// Internal indicates internal errors.
+message Internal {
+  option (proterror.options).code = INTERNAL;
+}
+
+// Unavailable indicates the service is currently unavailable.
+message Unavailable {
+  option (proterror.options).code = UNAVAILABLE;
+}
+
+// DataLoss indicates unrecoverable data loss or corruption.
+message DataLoss {
+  option (proterror.options).code = DATA_LOSS;
+}
+
+// Unauthenticated indicates the request does not have valid authentication credentials.
+message Unauthenticated {
+  option (proterror.options).code = UNAUTHENTICATED;
+}

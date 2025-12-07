@@ -1,0 +1,20 @@
+// options.proto defines the annotations used to describe proto-based errors.
+syntax = "proto3";
+
+package proterror;
+
+import "google/protobuf/descriptor.proto";
+import "google/rpc/code.proto";
+
+option go_package = "github.com/not-for-prod/proterror/proterror";
+
+// MessageOptions provides metadata needed to construct a gRPC status.
+message MessageOptions {
+  // code is the canonical gRPC code associated with the error message.
+  google.rpc.Code code = 1;
+}
+
+// options attaches MessageOptions to a proto message declaration.
+extend google.protobuf.MessageOptions {
+  MessageOptions options = 1043;
+}
