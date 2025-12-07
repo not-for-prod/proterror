@@ -3,6 +3,7 @@
 package proterror
 
 import (
+	registry "github.com/not-for-prod/proterror/registry"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 )
@@ -29,6 +30,10 @@ func (x *Cancelled) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&Cancelled{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: Unknown
 // ==================================================================================== //
@@ -49,6 +54,10 @@ func (x *Unknown) Code() codes.Code {
 func (x *Unknown) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&Unknown{})
 }
 
 // ==================================================================================== //
@@ -73,6 +82,10 @@ func (x *InvalidArgument) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&InvalidArgument{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: DeadlineExceeded
 // ==================================================================================== //
@@ -93,6 +106,10 @@ func (x *DeadlineExceeded) Code() codes.Code {
 func (x *DeadlineExceeded) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&DeadlineExceeded{})
 }
 
 // ==================================================================================== //
@@ -117,6 +134,10 @@ func (x *NotFound) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&NotFound{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: AlreadyExists
 // ==================================================================================== //
@@ -137,6 +158,10 @@ func (x *AlreadyExists) Code() codes.Code {
 func (x *AlreadyExists) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&AlreadyExists{})
 }
 
 // ==================================================================================== //
@@ -161,6 +186,10 @@ func (x *PermissionDenied) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&PermissionDenied{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: ResourceExhausted
 // ==================================================================================== //
@@ -181,6 +210,10 @@ func (x *ResourceExhausted) Code() codes.Code {
 func (x *ResourceExhausted) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&ResourceExhausted{})
 }
 
 // ==================================================================================== //
@@ -205,6 +238,10 @@ func (x *FailedPrecondition) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&FailedPrecondition{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: Aborted
 // ==================================================================================== //
@@ -225,6 +262,10 @@ func (x *Aborted) Code() codes.Code {
 func (x *Aborted) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&Aborted{})
 }
 
 // ==================================================================================== //
@@ -249,6 +290,10 @@ func (x *OutOfRange) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&OutOfRange{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: Unimplemented
 // ==================================================================================== //
@@ -269,6 +314,10 @@ func (x *Unimplemented) Code() codes.Code {
 func (x *Unimplemented) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&Unimplemented{})
 }
 
 // ==================================================================================== //
@@ -293,6 +342,10 @@ func (x *Internal) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&Internal{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: Unavailable
 // ==================================================================================== //
@@ -313,6 +366,10 @@ func (x *Unavailable) Code() codes.Code {
 func (x *Unavailable) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&Unavailable{})
 }
 
 // ==================================================================================== //
@@ -337,6 +394,10 @@ func (x *DataLoss) Status() *status.Status {
 	return st
 }
 
+func init() {
+	registry.Instance().Add(&DataLoss{})
+}
+
 // ==================================================================================== //
 // ProtError implementation for message: Unauthenticated
 // ==================================================================================== //
@@ -357,4 +418,8 @@ func (x *Unauthenticated) Code() codes.Code {
 func (x *Unauthenticated) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
+}
+
+func init() {
+	registry.Instance().Add(&Unauthenticated{})
 }

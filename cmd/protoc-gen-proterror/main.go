@@ -13,8 +13,9 @@ import (
 )
 
 var (
-	codesPackage  = protogen.GoImportPath("google.golang.org/grpc/codes")
-	statusPackage = protogen.GoImportPath("google.golang.org/grpc/status")
+	codesPackage             = protogen.GoImportPath("google.golang.org/grpc/codes")
+	statusPackage            = protogen.GoImportPath("google.golang.org/grpc/status")
+	protErrorRegistryPackage = protogen.GoImportPath("github.com/not-for-prod/proterror/registry")
 )
 
 func main() {
@@ -81,6 +82,11 @@ func generate(p *protogen.Plugin, f *protogen.File) {
 			g.P("func (x *", msg.Desc.Name(), ") Status() *", statusPackage.Ident("Status"), " {")
 			g.P("st, _ := ", statusPackage.Ident("New"), "(x.Code(), x.Error()).WithDetails(x)")
 			g.P("return st")
+			g.P("}")
+			g.P()
+
+			g.P("func init()  {")
+			g.P(protErrorRegistryPackage.Ident("Instance"), "().Add(&", msg.Desc.Name(), "{})")
 			g.P("}")
 			g.P()
 		}
