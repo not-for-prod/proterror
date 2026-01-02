@@ -45,7 +45,7 @@ func AsStatus(err error) *status.Status {
 	return (&proterror.Unknown{}).Status()
 }
 
-func PGErrorToProtError(err error) error {
+func FromPG(err error) error {
 	if err == nil {
 		return nil
 	}
