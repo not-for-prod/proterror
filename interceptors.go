@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 )
 
 // UnaryInterceptorOptions holds configuration for unary interceptors.
@@ -43,6 +44,19 @@ func UnaryServerInterceptor(_ ...UnaryInterceptorOption) grpc.UnaryServerInterce
 	) (any, error) {
 		resp, err := handler(ctx, req)
 		if err != nil {
+			// Handle joined errors.
+			joinError, ok := err.(interface {
+				Unwrap() []error
+			})
+			if ok {
+				for _, joinErr := range joinError.Unwrap() {
+					st := AsStatus(joinErr)
+					if st.Code() != codes.Unknown {
+						return nil, st.Err()
+					}
+				}
+			}
+
 			// Convert domain error → gRPC status.
 			return nil, AsStatus(err).Err()
 		}
