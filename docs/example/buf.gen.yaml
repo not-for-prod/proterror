@@ -1,0 +1,41 @@
+version: v2
+clean: true
+managed:
+  enabled: true
+  disable:
+    - module: buf.build/protocolbuffers/go
+    - module: buf.build/googleapis/googleapis
+    - module: buf.build/grpc/go
+    - module: buf.build/bufbuild/protovalidate
+    - module: buf.build/grpc-ecosystem/grpc-gateway
+    - module: buf.build/nfp341/proterror
+  override:
+    - file_option: go_package_prefix
+      value: polymarket/pkg
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: pkg
+    opt:
+      - paths=source_relative
+  - remote: buf.build/grpc/go
+    out: pkg
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  # grpc-gateway
+  - remote: buf.build/grpc-ecosystem/gateway
+    opt:
+      - generate_unbound_methods=true
+      - logtostderr=true
+      - paths=source_relative
+    out: pkg
+  #    swag
+  - remote: buf.build/grpc-ecosystem/openapiv2
+    out: pkg
+    opt:
+      - generate_unbound_methods=true
+      - fqn_for_openapi_name=true
+  - local: ../../bin/protoc-gen-proterror
+    out: pkg
+    opt:
+      - paths=source_relative

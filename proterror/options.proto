@@ -12,6 +12,8 @@ option go_package = "github.com/not-for-prod/proterror/proterror";
 message MessageOptions {
   // code is the canonical gRPC code associated with the error message.
   google.rpc.Code code = 1;
+  // internal marks the error as private and replaces it with UNKNOWN in client responses.
+  bool internal = 2;
 }
 
 // options attaches MessageOptions to a proto message declaration.

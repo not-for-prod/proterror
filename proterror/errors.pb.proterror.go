@@ -26,6 +26,10 @@ func (x *Cancelled) Code() codes.Code {
 	return codes.Code(1)
 }
 
+func (x *Cancelled) Internal() bool {
+	return false
+}
+
 func (x *Cancelled) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -36,7 +40,11 @@ func (x *Cancelled) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Cancelled{})
+	err := &Cancelled{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -56,6 +64,10 @@ func (x *Unknown) Code() codes.Code {
 	return codes.Code(2)
 }
 
+func (x *Unknown) Internal() bool {
+	return false
+}
+
 func (x *Unknown) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -66,7 +78,11 @@ func (x *Unknown) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Unknown{})
+	err := &Unknown{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -86,6 +102,10 @@ func (x *InvalidArgument) Code() codes.Code {
 	return codes.Code(3)
 }
 
+func (x *InvalidArgument) Internal() bool {
+	return false
+}
+
 func (x *InvalidArgument) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -96,7 +116,11 @@ func (x *InvalidArgument) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&InvalidArgument{})
+	err := &InvalidArgument{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -116,6 +140,10 @@ func (x *DeadlineExceeded) Code() codes.Code {
 	return codes.Code(4)
 }
 
+func (x *DeadlineExceeded) Internal() bool {
+	return false
+}
+
 func (x *DeadlineExceeded) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -126,7 +154,11 @@ func (x *DeadlineExceeded) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&DeadlineExceeded{})
+	err := &DeadlineExceeded{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -146,6 +178,10 @@ func (x *NotFound) Code() codes.Code {
 	return codes.Code(5)
 }
 
+func (x *NotFound) Internal() bool {
+	return false
+}
+
 func (x *NotFound) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -156,7 +192,11 @@ func (x *NotFound) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&NotFound{})
+	err := &NotFound{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -176,6 +216,10 @@ func (x *AlreadyExists) Code() codes.Code {
 	return codes.Code(6)
 }
 
+func (x *AlreadyExists) Internal() bool {
+	return false
+}
+
 func (x *AlreadyExists) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -186,7 +230,11 @@ func (x *AlreadyExists) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&AlreadyExists{})
+	err := &AlreadyExists{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -206,6 +254,10 @@ func (x *PermissionDenied) Code() codes.Code {
 	return codes.Code(7)
 }
 
+func (x *PermissionDenied) Internal() bool {
+	return false
+}
+
 func (x *PermissionDenied) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -216,7 +268,11 @@ func (x *PermissionDenied) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&PermissionDenied{})
+	err := &PermissionDenied{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -236,6 +292,10 @@ func (x *ResourceExhausted) Code() codes.Code {
 	return codes.Code(8)
 }
 
+func (x *ResourceExhausted) Internal() bool {
+	return false
+}
+
 func (x *ResourceExhausted) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -246,7 +306,11 @@ func (x *ResourceExhausted) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&ResourceExhausted{})
+	err := &ResourceExhausted{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -266,6 +330,10 @@ func (x *FailedPrecondition) Code() codes.Code {
 	return codes.Code(9)
 }
 
+func (x *FailedPrecondition) Internal() bool {
+	return false
+}
+
 func (x *FailedPrecondition) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -276,7 +344,11 @@ func (x *FailedPrecondition) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&FailedPrecondition{})
+	err := &FailedPrecondition{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -296,6 +368,10 @@ func (x *Aborted) Code() codes.Code {
 	return codes.Code(10)
 }
 
+func (x *Aborted) Internal() bool {
+	return false
+}
+
 func (x *Aborted) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -306,7 +382,11 @@ func (x *Aborted) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Aborted{})
+	err := &Aborted{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -326,6 +406,10 @@ func (x *OutOfRange) Code() codes.Code {
 	return codes.Code(11)
 }
 
+func (x *OutOfRange) Internal() bool {
+	return false
+}
+
 func (x *OutOfRange) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -336,7 +420,11 @@ func (x *OutOfRange) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&OutOfRange{})
+	err := &OutOfRange{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -356,6 +444,10 @@ func (x *Unimplemented) Code() codes.Code {
 	return codes.Code(12)
 }
 
+func (x *Unimplemented) Internal() bool {
+	return false
+}
+
 func (x *Unimplemented) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -366,7 +458,11 @@ func (x *Unimplemented) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Unimplemented{})
+	err := &Unimplemented{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -386,6 +482,10 @@ func (x *Internal) Code() codes.Code {
 	return codes.Code(13)
 }
 
+func (x *Internal) Internal() bool {
+	return false
+}
+
 func (x *Internal) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -396,7 +496,11 @@ func (x *Internal) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Internal{})
+	err := &Internal{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -416,6 +520,10 @@ func (x *Unavailable) Code() codes.Code {
 	return codes.Code(14)
 }
 
+func (x *Unavailable) Internal() bool {
+	return false
+}
+
 func (x *Unavailable) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -426,7 +534,11 @@ func (x *Unavailable) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Unavailable{})
+	err := &Unavailable{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -446,6 +558,10 @@ func (x *DataLoss) Code() codes.Code {
 	return codes.Code(15)
 }
 
+func (x *DataLoss) Internal() bool {
+	return false
+}
+
 func (x *DataLoss) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -456,7 +572,11 @@ func (x *DataLoss) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&DataLoss{})
+	err := &DataLoss{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }
 
 // ==================================================================================== //
@@ -476,6 +596,10 @@ func (x *Unauthenticated) Code() codes.Code {
 	return codes.Code(16)
 }
 
+func (x *Unauthenticated) Internal() bool {
+	return false
+}
+
 func (x *Unauthenticated) Status() *status.Status {
 	st, _ := status.New(x.Code(), x.Error()).WithDetails(x)
 	return st
@@ -486,5 +610,9 @@ func (x *Unauthenticated) Join(err error) error {
 }
 
 func init() {
-	registry.Instance().Add(&Unauthenticated{})
+	err := &Unauthenticated{}
+
+	if !err.Internal() {
+		registry.Instance().Add(err)
+	}
 }

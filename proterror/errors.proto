@@ -9,80 +9,128 @@ option go_package = "github.com/not-for-prod/proterror/proterror";
 
 // Cancelled indicates the operation was cancelled (typically by the caller).
 message Cancelled {
-  option (proterror.options).code = CANCELLED;
+  option (proterror.options) = {
+    code: CANCELLED
+    internal: false,
+  };
 }
 
 // Unknown is a fallback error for unexpected failures.
 message Unknown {
-  option (proterror.options).code = UNKNOWN;
+  option (proterror.options) = {
+    code: UNKNOWN
+    internal: false,
+  };
 }
 
 // InvalidArgument indicates client specified an invalid argument.
 message InvalidArgument {
-  option (proterror.options).code = INVALID_ARGUMENT;
+  option (proterror.options) = {
+    code: INVALID_ARGUMENT
+    internal: false,
+  };
 }
 
 // DeadlineExceeded indicates the deadline expired before completion.
 message DeadlineExceeded {
-  option (proterror.options).code = DEADLINE_EXCEEDED;
+  option (proterror.options) = {
+    code: DEADLINE_EXCEEDED
+    internal: false,
+  };
 }
 
 // NotFound indicates a requested resource was not found.
 message NotFound {
-  option (proterror.options).code = NOT_FOUND;
+  option (proterror.options) = {
+    code: NOT_FOUND
+    internal: false,
+  };
 }
 
 // AlreadyExists indicates the resource that a client attempted to create already exists.
 message AlreadyExists {
-  option (proterror.options).code = ALREADY_EXISTS;
+  option (proterror.options) = {
+    code: ALREADY_EXISTS
+    internal: false,
+  };
 }
 
 // PermissionDenied indicates the caller does not have permission to execute the specified operation.
 message PermissionDenied {
-  option (proterror.options).code = PERMISSION_DENIED;
+  option (proterror.options) = {
+    code: PERMISSION_DENIED
+    internal: false,
+  };
 }
 
 // ResourceExhausted indicates some resource has been exhausted, perhaps a per-user quota.
 message ResourceExhausted {
-  option (proterror.options).code = RESOURCE_EXHAUSTED;
+  option (proterror.options) = {
+    code: RESOURCE_EXHAUSTED
+    internal: false,
+  };
 }
 
 // FailedPrecondition indicates operation was rejected because the system is not in a required state.
 message FailedPrecondition {
-  option (proterror.options).code = FAILED_PRECONDITION;
+  option (proterror.options) = {
+    code: FAILED_PRECONDITION
+    internal: false,
+  };
 }
 
 // Aborted indicates the operation was aborted, typically due to concurrency issues.
 message Aborted {
-  option (proterror.options).code = ABORTED;
+  option (proterror.options) = {
+    code: ABORTED
+    internal: false,
+  };
 }
 
 // OutOfRange indicates operation was attempted past the valid range.
 message OutOfRange {
-  option (proterror.options).code = OUT_OF_RANGE;
+  option (proterror.options) = {
+    code: OUT_OF_RANGE
+    internal: false,
+  };
 }
 
 // Unimplemented indicates operation is not implemented or not supported/enabled.
 message Unimplemented {
-  option (proterror.options).code = UNIMPLEMENTED;
+  option (proterror.options) = {
+    code: UNIMPLEMENTED
+    internal: false,
+  };
 }
 
 // Internal indicates internal errors.
 message Internal {
-  option (proterror.options).code = INTERNAL;
+  option (proterror.options) = {
+    code: INTERNAL
+    internal: false,
+  };
 }
 
 // Unavailable indicates the service is currently unavailable.
 message Unavailable {
-  option (proterror.options).code = UNAVAILABLE;
+  option (proterror.options) = {
+    code: UNAVAILABLE
+    internal: false,
+  };
 }
 
 // DataLoss indicates unrecoverable data loss or corruption.
 message DataLoss {
-  option (proterror.options).code = DATA_LOSS;
+  option (proterror.options) = {
+    code: DATA_LOSS
+    internal: false,
+  };
 }
 
 // Unauthenticated indicates the request does not have valid authentication credentials.
 message Unauthenticated {
-  option (proterror.options).code = UNAUTHENTICATED;
+  option (proterror.options) = {
+    code: UNAUTHENTICATED
+    internal: false,
+  };
 }

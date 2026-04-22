@@ -1,4 +1,4 @@
-// protoc-gen-ProtError generates gRPC-aware error helpers for proto messages annotated with error options.
+// protoc-gen-ProtError generates gRPC-aware error helpers for api messages annotated with error options.
 package main
 
 import (
@@ -78,6 +78,12 @@ func generate(p *protogen.Plugin, f *protogen.File) {
 				g.P("return ", codesPackage.Ident("Code"), "(", num, ")")
 				g.P("}")
 				g.P()
+
+				g.P("func (x *", msg.Desc.Name(), ") Internal() bool {")
+				intenal := bool(ext.Internal)
+				g.P("return ", intenal)
+				g.P("}")
+				g.P()
 			}
 
 			g.P("func (x *", msg.Desc.Name(), ") Status() *", statusPackage.Ident("Status"), " {")
@@ -92,7 +98,11 @@ func generate(p *protogen.Plugin, f *protogen.File) {
 			g.P()
 
 			g.P("func init()  {")
-			g.P(protErrorRegistryPackage.Ident("Instance"), "().Add(&", msg.Desc.Name(), "{})")
+			g.P("err := &", msg.Desc.Name(), "{}")
+			g.P()
+			g.P("if !err.Internal() {")
+			g.P(protErrorRegistryPackage.Ident("Instance"), "().Add(err)")
+			g.P("}")
 			g.P("}")
 			g.P()
 		}

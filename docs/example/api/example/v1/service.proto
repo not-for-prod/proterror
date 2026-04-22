@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package example.v1;
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/api/annotations.proto";
+import "proterror/options.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Example"
+    description: "Example"
+    version: "1.0"
+  }
+};
+
+service ExampleService {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_tag) = {name: "Example"};
+  
+  rpc Test(TestRequest) returns (TestResponse) {
+      option (google.api.http) = {
+        get: "/v1/example"
+      };
+  }; 
+}
+
+message TestRequest {
+
+  bool internal = 1;
+}
+
+message TestResponse {
+    
+}
+
+message InternalError {
+  option (proterror.options) = {
+    code: UNAVAILABLE
+    internal: true
+  };
+}
+
+message PublicError {
+  option (proterror.options) = {
+    code: UNAVAILABLE
+    internal: false
+  };
+
+  string text = 1;
+}
